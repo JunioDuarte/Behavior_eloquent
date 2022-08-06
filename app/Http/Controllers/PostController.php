@@ -14,7 +14,6 @@ class PostController extends Controller
      */
     public function index()
     {
-        echo "Listagem de Artigos!!";
 /*
         $posts = Post::where('created_at', '>=', date('Y-m-d H:i:s'))->orderBy('title', 'desc')->take(5
         )->get();
@@ -53,9 +52,6 @@ class PostController extends Controller
 
         $posts = Post::all();
         return view('posts.index', ['posts' => $posts]);
-
-
-        var_dump($post);
     }
 
     /**
@@ -65,7 +61,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -76,7 +72,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $postRequest = [
+            'title' => $request -> title
+        ];
+        var_dump($postRequest, $request);
     }
 
     /**
