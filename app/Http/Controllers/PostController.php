@@ -72,10 +72,38 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $postRequest = [
-            'title' => $request -> title
-        ];
-        var_dump($postRequest, $request);
+
+        //Object -> Prop -> Save
+      /*   $post = new Post;
+        $post -> title = $request -> title;
+        $post -> subtitle = $request -> subtitle;
+        $post -> description = $request -> description;
+        $post -> save(); */
+        //var_dump($postRequest, $request);
+
+        /* Post::create([
+            'title' => $request -> title,
+            'subtitle' => $request->subtitle,
+            'description' => $request-> description
+        ]);
+    */
+       /*  $post = Post::firstorNew([
+            'title' => 'teste2',
+            'subtitle' => 'teste3',
+        ], [
+            'description' => 'teste2'
+        ]);
+            $post -> save();
+        */
+
+
+        $post = Post::firstorCreate([
+            'title' => 'teste2',
+            'subtitle' => 'teste3',
+        ], [
+            'description' => 'teste2'
+        ]);
+        var_dump($post);
     }
 
     /**
