@@ -7,6 +7,28 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    public function forceDelete($post){
+        Post::onlyTrashed()->where(['id'=> $post])->forceDelete();
+        return redirect()->route('posts.trashed');
+    }
+
+    public function restore($post)
+    {
+        $post = Post::onlyTrashed()->where(['id'=>$post])->first();
+
+        if($post->trashed()){
+            $post->restore();
+        }
+        return redirect()->route('posts.trashed');
+    }
+
+    public function trashed()
+    {
+        $posts = Post::onlyTrashed()->get();
+        return view('posts.trashed', ['posts'=>$posts]);
+    }
+
     /**
      * Display a listing of the resource.
      *

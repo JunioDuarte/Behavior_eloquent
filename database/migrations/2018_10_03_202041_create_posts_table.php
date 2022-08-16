@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->timestamps();
             //$table->timestamps('creation_date')->nullable();
 
-
+ 
         });
     }
 
